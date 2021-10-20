@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Entities.Models
 {
-    public class Medicine : IEntity
+    public class MedicineType:IEntity
     {
         public int Id { get; set; }
-        public int Name { get; set; }
-        public int Price{ get; set; }   
+        public int TypeName{ get; set; }
+        
     }
 }
