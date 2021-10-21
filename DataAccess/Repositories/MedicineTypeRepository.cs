@@ -2,17 +2,17 @@
 using Entities.Models;
 using System;
 using System.Collections.Generic;
-
+;
 
 namespace DataAccess.Repositories
 {
-    public class MedicineRepository : IRepository<Medicine>
+    public class MedicineTypeRepository : IRepository<MedicineType>
     {
-        public bool Create(Medicine entity)
+        public bool Create(MedicineType entity)
         {
             try
             {
-                DbContext.Medicines.Add(entity);
+                DbContext.MedicineTypes.Add(entity);
                 return true;
             }
             catch (Exception)
@@ -22,17 +22,17 @@ namespace DataAccess.Repositories
             }
         }
 
-        public bool Delete(Medicine entity)
+        public bool Delete(MedicineType entity)
         {
-            DbContext.Medicines.Remove(entity);
+            DbContext.MedicineTypes.Remove(entity);
             return true;
         }
 
-        public Medicine Get(Predicate<Medicine> filter = null)
+        public MedicineType Get(Predicate<MedicineType> filter = null)
         {
             try
             {
-                return filter == null ? DbContext.Medicines[0] : DbContext.Medicines.Find(filter);
+                return filter == null ? DbContext.MedicineTypes[0] : DbContext.MedicineTypes.Find(filter);
             }
             catch (Exception)
             {
@@ -40,11 +40,11 @@ namespace DataAccess.Repositories
             }
         }
 
-        public List<Medicine> GetAll(Predicate<Medicine> filter = null)
+        public List<MedicineType> GetAll(Predicate<MedicineType> filter = null)
         {
             try
             {
-                return filter == null ? DbContext.Medicines : DbContext.Medicines.FindAll(filter);
+                return filter == null ? DbContext.MedicineTypes : DbContext.MedicineTypes.FindAll(filter);
             }
             catch (Exception)
             {
@@ -53,12 +53,12 @@ namespace DataAccess.Repositories
             }
         }
 
-        public bool Update(Medicine entity)
+        public bool Update(MedicineType entity)
         {
             try
             {
-                Medicine dbMedicine = Get(m => m.Id == entity.Id);
-                dbMedicine = entity;
+                MedicineType dbMedicineType = Get(m => m.Id == entity.Id);
+                dbMedicineType = entity;
                 return true;
             }
             catch (Exception)
