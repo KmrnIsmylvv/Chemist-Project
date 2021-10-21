@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace Business.Services
 {
-    class MedicineTypeService : IMedicineType
+    public class MedicineTypeService : IMedicineType
     {
         public MedicineTypeRepository medicineTypeRepository { get; set; }
-        private static int count{ get; set; }
+        private static int count { get; set; }
         public MedicineTypeService()
         {
             medicineTypeRepository = new MedicineTypeRepository();
@@ -22,14 +22,13 @@ namespace Business.Services
                 MedicineType isExist = medicineTypeRepository.Get(m => m.TypeName.ToLower()
                   == medicineType.TypeName.ToLower());
                 if (isExist != null)
-                   return null;
+                    return null;
                 medicineTypeRepository.Create(medicineType);
                 count++;
                 return medicineType;
             }
             catch (Exception)
             {
-
                 return null;
             }
         }
@@ -51,7 +50,7 @@ namespace Business.Services
 
         public List<MedicineType> GetAll()
         {
-            throw new NotImplementedException();
+            return medicineTypeRepository.GetAll();
         }
 
         public MedicineType Update(int Id, MedicineType medicineType)

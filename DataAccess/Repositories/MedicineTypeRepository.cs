@@ -2,7 +2,7 @@
 using Entities.Models;
 using System;
 using System.Collections.Generic;
-;
+
 
 namespace DataAccess.Repositories
 {
