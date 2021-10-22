@@ -2,13 +2,15 @@
 using Utilies.Helper;
 using Entities.Models;
 using Business.Services;
+using ChemistApp.Controllers;
+
 namespace ChemistApp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            MedicineTypeService medicineTypeService = new MedicineTypeService();
+            MedicineTypeController medicineTypeController = new MedicineTypeController();
             Helper.ChangeTextColor(ConsoleColor.Magenta, "Welcome");
 
             while (true)
@@ -26,38 +28,20 @@ namespace ChemistApp
                 {
                     switch (menu)
                     {
-                        case 1:
-                            Helper.ChangeTextColor(ConsoleColor.Cyan, "Enter MedicineType Name: ");
-                            string name = Console.ReadLine();
-
-                            MedicineType medicineType = new MedicineType { TypeName = name };
-                            if (medicineTypeService.Create(medicineType) != null)
-                            {
-                                Helper.ChangeTextColor(ConsoleColor.Green, $"{medicineType.TypeName} created");
-                                break;
-                            }
-                            else
-                            {
-                                Helper.ChangeTextColor(ConsoleColor.Red, "Something is wrong!!!");
-                                break;
-                            }
+                        case (int)Helper.Menu.CreateMedicineType:
+                            medicineTypeController.Create();
                             break;
-                        case 2:
+                        case (int)Helper.Menu.UpdateMedicineType:
                             break;
-                        case 3:
+                        case (int)Helper.Menu.DeleteMedicineType:
                             break;
-                        case 4:
+                        case (int)Helper.Menu.GetMedicineTypeWithId:
                             break;
-                        case 5:
+                        case (int)Helper.Menu.GetMedicineTypeWithName:
                             break;
-                        case 6:
-                            Helper.ChangeTextColor(ConsoleColor.Yellow, "All Medicine Types: ");
-                            foreach (MedicineType item in medicineTypeService.GetAll())
-                            {
-                                Helper.ChangeTextColor(ConsoleColor.Blue, $"{item.Id} - {item.TypeName}");
-                            }
+                        case (int)Helper.Menu.AllMedicineTypes:
+                            medicineTypeController.GetAllMedicineType();
                             break;
-
                     }
                 }
                 else
