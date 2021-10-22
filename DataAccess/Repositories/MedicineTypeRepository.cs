@@ -24,8 +24,17 @@ namespace DataAccess.Repositories
 
         public bool Delete(MedicineType entity)
         {
-            DbContext.MedicineTypes.Remove(entity);
-            return true;
+            try
+            {
+                DbContext.MedicineTypes.Remove(entity);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public MedicineType Get(Predicate<MedicineType> filter = null)

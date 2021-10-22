@@ -34,7 +34,7 @@ namespace ChemistApp.Controllers
             }
         }
 
-        public void GetAllMedicineType()
+        public void GetAll()
         {
             Helper.ChangeTextColor(ConsoleColor.Yellow, "All Medicine Types: ");
             foreach (MedicineType item in medicineTypeService.GetAll())
@@ -42,5 +42,32 @@ namespace ChemistApp.Controllers
                 Helper.ChangeTextColor(ConsoleColor.Blue, $"{item.Id} - {item.TypeName}");
             }
         }
+
+        public void Delete()
+        {
+            GetAll();
+            Helper.ChangeTextColor(ConsoleColor.Yellow, "Enter Medicine Type Id: ");
+            string input = Console.ReadLine();
+            int medicineTypeId;
+            bool isTrue = int.TryParse(input,out medicineTypeId);
+            if (isTrue)
+            {
+                if (medicineTypeService.Delete(medicineTypeId) != null)
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Green, "Medicine Type is deleted");
+                    return;
+                }
+                else
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Red, $"{medicineTypeId} is not find");
+                }
+            }
+            else
+            {
+                Helper.ChangeTextColor(ConsoleColor.Red, $"Please, select correct format");
+            }
+        }
+
+
     }
 }

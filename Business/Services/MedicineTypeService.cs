@@ -10,6 +10,8 @@ namespace Business.Services
     {
         public MedicineTypeRepository medicineTypeRepository { get; set; }
         private static int count { get; set; }
+
+
         public MedicineTypeService()
         {
             medicineTypeRepository = new MedicineTypeRepository();
@@ -35,7 +37,16 @@ namespace Business.Services
 
         public MedicineType Delete(int Id)
         {
-            throw new NotImplementedException();
+            MedicineType dbMedicineType = medicineTypeRepository.Get(t => t.Id == Id);
+            if (dbMedicineType != null)
+            {
+                medicineTypeRepository.Delete(dbMedicineType);
+                return dbMedicineType;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public MedicineType Get(int Id)

@@ -12,11 +12,10 @@ namespace Utilies.Helper
             Console.WriteLine(message);
             Console.ResetColor();
         }
-        //"1- Create MedicineType, 2-Update MedicineType," +
-        //            "3- Delete MedicineType, 4-Get MedicineType with Id, 5- Get MedicineType with Name," +
-        //            " 6- All MedicineTypes ");
+        
         public enum Menu
         {
+            Exit,
             CreateMedicineType,
             UpdateMedicineType,
             DeleteMedicineType,
