@@ -42,14 +42,14 @@ namespace ChemistApp.Controllers
                 Helper.ChangeTextColor(ConsoleColor.Blue, $"{item.Id} - {item.TypeName}");
             }
         }
-        
-         public void Delete()
+
+        public void Delete()
         {
             GetAll();
             Helper.ChangeTextColor(ConsoleColor.Yellow, "Enter Medicine Type Id: ");
             string input = Console.ReadLine();
             int medicineTypeId;
-            bool isTrue = int.TryParse(input,out medicineTypeId);
+            bool isTrue = int.TryParse(input, out medicineTypeId);
             if (isTrue)
             {
                 if (medicineTypeService.Delete(medicineTypeId) != null)
@@ -67,7 +67,7 @@ namespace ChemistApp.Controllers
                 Helper.ChangeTextColor(ConsoleColor.Red, $"Please, select correct format");
             }
         }
-        
+
         public void GetWithName()
         {
             Helper.ChangeTextColor(ConsoleColor.Blue, "Enter Medicine Type Name: ");
@@ -82,6 +82,29 @@ namespace ChemistApp.Controllers
                 {
                     Helper.ChangeTextColor(ConsoleColor.Cyan, $"{item.TypeName} isn't exist");
                 }
+            }
+        }
+
+        public void GetWithId()
+        {
+            GetAll();
+            Helper.ChangeTextColor(ConsoleColor.Blue, "Enter Medicine Type Id: ");
+            string input = Console.ReadLine();
+            int typeId;
+            bool isTrue = int.TryParse(input, out typeId);
+            if (isTrue)
+            {
+                MedicineType medicineType = medicineTypeService.Get(typeId);
+                Helper.ChangeTextColor(ConsoleColor.Blue, $"Medicine Types which Id is {typeId}");
+                if (isTrue != null)
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan, medicineType.TypeName);
+                }
+                else
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Red, $"Catrgory couldnt find");
+                }
+
             }
         }
     }

@@ -21,7 +21,8 @@ namespace Utilies.Helper
             DeleteMedicineType,
             GetMedicineTypeWithId,
             GetMedicineTypeWithName,
-            AllMedicineTypes
+            AllMedicineTypes,
+            CreateMedicine
         }
     }
 }

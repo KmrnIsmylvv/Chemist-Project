@@ -11,6 +11,7 @@ namespace ChemistApp
         static void Main(string[] args)
         {
             MedicineTypeController medicineTypeController = new MedicineTypeController();
+            MedicineController medicineController = new MedicineController();
             Helper.ChangeTextColor(ConsoleColor.Magenta, "Welcome");
 
             while (true)
@@ -20,7 +21,7 @@ namespace ChemistApp
                 int menu;
                 bool isTrue = int.TryParse(selectedMenu, out menu);
 
-                if (isTrue && menu >= 1 && menu <= 7)
+                if (isTrue && menu >= 1 && menu <= 10)
                 {
                     switch (menu)
                     {
@@ -33,12 +34,17 @@ namespace ChemistApp
                             medicineTypeController.Delete();
                             break;
                         case (int)Helper.Menu.GetMedicineTypeWithId:
+                            medicineTypeController.GetWithId();
                             break;
                         case (int)Helper.Menu.GetMedicineTypeWithName:
                             medicineTypeController.GetWithName();
                             break;
                         case (int)Helper.Menu.AllMedicineTypes:
                             medicineTypeController.GetAll();
+                            break;
+                        case (int)Helper.Menu.CreateMedicine:
+                            medicineTypeController.GetAll();
+                            medicineController.Create();
                             break;
                     }
                 }
@@ -57,7 +63,7 @@ namespace ChemistApp
         {
             Helper.ChangeTextColor(ConsoleColor.Green, "1- Create MedicineType, 2-Update MedicineType," +
                    "3- Delete MedicineType, 4-Get MedicineType with Id, 5- Get MedicineType with Name," +
-                   " 6- All MedicineTypes, 0- Exit ");
+                   " 6- All MedicineTypes, 7- Create Medicine, 0- Exit ");
             Helper.ChangeTextColor(ConsoleColor.Yellow, "Select Option Number: ");
         }
     }

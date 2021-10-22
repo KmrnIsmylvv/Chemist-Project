@@ -51,7 +51,7 @@ namespace Business.Services
 
         public MedicineType Get(int Id)
         {
-            throw new NotImplementedException();
+            return medicineTypeRepository.Get(t => t.Id == Id);
         }
 
         public MedicineType Get(string name)

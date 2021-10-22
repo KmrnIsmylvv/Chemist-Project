@@ -1,4 +1,5 @@
 ﻿using Business.Interfaces;
+using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,33 @@ namespace Business.Services
 {
     public class MedicineService : IMedicine
     {
-        public Medicine Create(Medicine entity, string MedicineTypeName)
+
+        private MedicineRepository medicineRepository { get; }
+        private MedicineTypeService medicineTypeService { get; }
+
+        private static int count { get; set; }
+
+        public MedicineService()
         {
-            throw new NotImplementedException();
+            medicineRepository = new MedicineRepository();
+            medicineTypeService = new MedicineTypeService();
+        }
+        public Medicine Create(Medicine medicine, string medicineTypeName)
+        {
+            MedicineType dbmedicineType = medicineTypeService.Get(medicineTypeName);
+            if (dbmedicineType != null)
+            {
+                medicine.Type = dbmedicineType;
+                medicine.Id = count;
+                medicineRepository.Create(medicine);
+                count++;
+                return medicine;
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
         public Medicine Delete(int id)
