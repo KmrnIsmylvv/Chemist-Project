@@ -56,7 +56,7 @@ namespace Business.Services
 
         public MedicineType Get(string name)
         {
-            throw new NotImplementedException();
+           return medicineTypeRepository.Get(t => t.TypeName.ToLower() == name.ToLower());
         }
 
         public List<MedicineType> GetAll()

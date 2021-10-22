@@ -68,6 +68,21 @@ namespace ChemistApp.Controllers
             }
         }
 
-
+        public void GetWithName()
+        {
+            Helper.ChangeTextColor(ConsoleColor.Blue, "Enter Medicine Type Name: ");
+            string input = Console.ReadLine();
+            foreach (var item in medicineTypeService.GetAll())
+            {
+                if (input.ToLower() == item.TypeName.ToLower())
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan, $"{item.TypeName} is exist");
+                }
+                else
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan, $"{item.TypeName} isn't exist");
+                }
+            }
+        }
     }
 }

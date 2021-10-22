@@ -35,7 +35,7 @@ namespace ChemistApp
                         case (int)Helper.Menu.GetMedicineTypeWithId:
                             break;
                         case (int)Helper.Menu.GetMedicineTypeWithName:
-
+                            medicineTypeController.GetWithName();
                             break;
                         case (int)Helper.Menu.AllMedicineTypes:
                             medicineTypeController.GetAll();
