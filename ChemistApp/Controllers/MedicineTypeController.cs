@@ -42,8 +42,8 @@ namespace ChemistApp.Controllers
                 Helper.ChangeTextColor(ConsoleColor.Blue, $"{item.Id} - {item.TypeName}");
             }
         }
-
-        public void Delete()
+        
+         public void Delete()
         {
             GetAll();
             Helper.ChangeTextColor(ConsoleColor.Yellow, "Enter Medicine Type Id: ");
@@ -67,7 +67,7 @@ namespace ChemistApp.Controllers
                 Helper.ChangeTextColor(ConsoleColor.Red, $"Please, select correct format");
             }
         }
-
+        
         public void GetWithName()
         {
             Helper.ChangeTextColor(ConsoleColor.Blue, "Enter Medicine Type Name: ");

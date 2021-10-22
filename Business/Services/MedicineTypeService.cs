@@ -11,7 +11,7 @@ namespace Business.Services
         public MedicineTypeRepository medicineTypeRepository { get; set; }
         private static int count { get; set; }
 
-
+        
         public MedicineTypeService()
         {
             medicineTypeRepository = new MedicineTypeRepository();
