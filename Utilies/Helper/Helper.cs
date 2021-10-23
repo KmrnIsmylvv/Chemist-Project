@@ -23,7 +23,10 @@ namespace Utilies.Helper
             GetMedicineTypeWithName,
             AllMedicineTypes,
             CreateMedicine,
-            GetAllMedicinesWithTypeNames
+            GetAllMedicinesWithTypeNames,
+            GetAllMedicines,
+            DeleteMedicine,
+            GetMedicineWithId
         }
     }
 }

@@ -107,5 +107,37 @@ namespace ChemistApp.Controllers
 
             }
         }
+
+        public void Update()
+        {
+            GetAll();
+
+            Helper.ChangeTextColor(ConsoleColor.Yellow, "Enter Type Id: ");
+            string input = Console.ReadLine();
+            int typeId;
+            bool isTrue = int.TryParse(input, out typeId);
+            Helper.ChangeTextColor(ConsoleColor.Cyan, "Enter New Type Name: ");
+            string newTypeName = Console.ReadLine();
+            MedicineType medicineType = new MedicineType();
+            if (isTrue)
+            {
+                foreach (var item in medicineTypeService.GetAll())
+                {
+                    if (medicineTypeService.Update(typeId, medicineType) != null)
+                    {
+                        item.TypeName = newTypeName;
+                        Helper.ChangeTextColor(ConsoleColor.Green, $"Type Name is updated: {item.Id} - {item.TypeName}");
+                    }
+                    else
+                    {
+                        Helper.ChangeTextColor(ConsoleColor.Red, "Something is wrong");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Please, select correct format");
+            }
+        }
     }
 }

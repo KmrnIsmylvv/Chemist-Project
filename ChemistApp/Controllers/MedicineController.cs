@@ -56,5 +56,63 @@ namespace ChemistApp.Controllers
             }
             Helper.ChangeTextColor(ConsoleColor.Red, $"Couldnt find such as type {typeName}");
         }
+
+        public void Delete()
+        {
+            GetAll();
+            Helper.ChangeTextColor(ConsoleColor.Yellow, "Enter Medicine Type Id: ");
+            string input = Console.ReadLine();
+            int medicineId;
+            bool isTrue = int.TryParse(input, out medicineId);
+
+            if (isTrue)
+            {
+                if (medicineService.Delete(medicineId) != null)
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Green, "Medicine Type is deleted");
+                    return;
+                }
+                else
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Red, $"{medicineId} is not find");
+                }
+            }
+            else
+            {
+                Helper.ChangeTextColor(ConsoleColor.Red, $"Please, select correct format");
+            }
+        }
+
+        public void GetAll()
+        {
+            Helper.ChangeTextColor(ConsoleColor.Yellow, "All Medicine Types: ");
+            foreach (Medicine item in medicineService.GetAll())
+            {
+                Helper.ChangeTextColor(ConsoleColor.Blue, $"{item.Id} - {item.Name} - {item.Price} azn");
+            }
+        }
+
+        public void GetWithId()
+        {
+            GetAll();
+            Helper.ChangeTextColor(ConsoleColor.Blue, "Enter Medicine  Id: ");
+            string input = Console.ReadLine();
+            int medicineId;
+            bool isTrue = int.TryParse(input, out medicineId);
+
+            if (isTrue)
+            {
+                Medicine medicine = medicineService.Get(medicineId);
+                Helper.ChangeTextColor(ConsoleColor.Blue, $"Medicine Types which Id is {medicineId}");
+                if (isTrue != null)
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan, $"{medicine.Name} {medicine.Price} Azn");
+                }
+                else
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Red, $"Medicine couldnt find");
+                }
+            }
+        }
     }
 }

@@ -53,12 +53,21 @@ namespace Business.Services
 
         public Medicine Delete(int id)
         {
-            throw new NotImplementedException();
+            Medicine dbMedicine = medicineRepository.Get(m => m.Id == id);
+            if (dbMedicine != null)
+            {
+                medicineRepository.Delete(dbMedicine);
+                return dbMedicine;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Medicine Get(int id)
         {
-            throw new NotImplementedException();
+            return medicineRepository.Get(t => t.Id == id);
         }
 
         public Medicine Get(string name)
@@ -70,7 +79,7 @@ namespace Business.Services
 
         public List<Medicine> GetAll()
         {
-            throw new NotImplementedException();
+            return medicineRepository.GetAll();
         }
 
         public Medicine Update(Medicine entity, string MedicineTypeName)

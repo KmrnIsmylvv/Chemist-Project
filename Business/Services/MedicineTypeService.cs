@@ -11,7 +11,7 @@ namespace Business.Services
         public MedicineTypeRepository medicineTypeRepository { get; set; }
         private static int count { get; set; }
 
-        
+
         public MedicineTypeService()
         {
             medicineTypeRepository = new MedicineTypeRepository();
@@ -56,7 +56,7 @@ namespace Business.Services
 
         public MedicineType Get(string name)
         {
-           return medicineTypeRepository.Get(t => t.TypeName.ToLower() == name.ToLower());
+            return medicineTypeRepository.Get(t => t.TypeName.ToLower() == name.ToLower());
         }
 
         public List<MedicineType> GetAll()
@@ -66,7 +66,16 @@ namespace Business.Services
 
         public MedicineType Update(int Id, MedicineType medicineType)
         {
-            throw new NotImplementedException();
+            MedicineType dbMedicineType = medicineTypeRepository.Get(t => t.Id == Id);
+            if (dbMedicineType != null)
+            {
+                medicineTypeRepository.Update(medicineType);
+                return medicineType;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
