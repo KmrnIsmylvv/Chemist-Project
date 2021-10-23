@@ -9,7 +9,7 @@ namespace ChemistApp.Controllers
 {
     public class MedicineController
     {
-       private MedicineService medicineService { get; }
+        private MedicineService medicineService { get; }
 
         public MedicineController()
         {
@@ -35,6 +35,26 @@ namespace ChemistApp.Controllers
                 return;
             }
             Helper.ChangeTextColor(ConsoleColor.Red, $"Couldnt find such as Medicine Type - {typeName}");
+        }
+
+        public void GetAllMedicinesWithTypeNames()
+        {
+            Helper.ChangeTextColor(ConsoleColor.Blue, "Select Possible Medicine Type: ");
+            string typeName = Console.ReadLine();
+
+            List<Medicine> medicines = medicineService.GetAll(typeName);
+
+            if (medicineService != null)
+            {
+                Helper.ChangeTextColor(ConsoleColor.Blue, $"Type {typeName}: ");
+                foreach (var item in medicines)
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Green,
+                        $"{item.Id} - {item.Name} - {item.Price} Azn");
+                }
+                return;
+            }
+            Helper.ChangeTextColor(ConsoleColor.Red, $"Couldnt find such as type {typeName}");
         }
     }
 }

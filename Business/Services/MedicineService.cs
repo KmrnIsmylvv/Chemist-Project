@@ -38,6 +38,19 @@ namespace Business.Services
 
         }
 
+        public List<Medicine> GetAll(string medicineTypeName)
+        {
+            MedicineType dbMedicineType = medicineTypeService.Get(medicineTypeName);
+            if (dbMedicineType != null)
+            {
+                return medicineRepository.GetAll(m => m.Type.TypeName == dbMedicineType.TypeName);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public Medicine Delete(int id)
         {
             throw new NotImplementedException();
@@ -53,10 +66,7 @@ namespace Business.Services
             throw new NotImplementedException();
         }
 
-        public List<Medicine> GetAll(string medicineTypeName)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public List<Medicine> GetAll()
         {
