@@ -114,5 +114,22 @@ namespace ChemistApp.Controllers
                 }
             }
         }
+
+        public void GetWithName()
+        {
+            Helper.ChangeTextColor(ConsoleColor.Blue, "Enter Medicine Nane: ");
+            string input = Console.ReadLine();
+            foreach (var item in medicineService.GetAll())
+            {
+                if (input.ToLower() == item.Name.ToLower())
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan, $"{item.Name} is exist");
+                }
+                else
+                {
+                    Helper.ChangeTextColor(ConsoleColor.Cyan, $"{item.Name} isn't exist");
+                }
+            }
+        }
     }
 }

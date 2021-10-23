@@ -72,7 +72,7 @@ namespace Business.Services
 
         public Medicine Get(string name)
         {
-            throw new NotImplementedException();
+            return medicineRepository.Get(m => m.Name.ToLower() == name.ToLower());
         }
 
       
