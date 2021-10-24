@@ -125,8 +125,12 @@ namespace ChemistApp.Controllers
                 {
                     if (medicineTypeService.Update(typeId, medicineType) != null)
                     {
-                        item.TypeName = newTypeName;
-                        Helper.ChangeTextColor(ConsoleColor.Green, $"Type Name is updated: {item.Id} - {item.TypeName}");
+                        if (typeId == item.Id)
+                        {
+                            item.TypeName = newTypeName;
+                            Helper.ChangeTextColor(ConsoleColor.Green, $"Type Name is updated: {item.Id} - {item.TypeName}");
+                        }
+                       
                     }
                     else
                     {
