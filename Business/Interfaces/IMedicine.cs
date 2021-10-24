@@ -11,7 +11,7 @@ namespace Business.Interfaces
 
         Medicine Delete(int id);
 
-        Medicine Update(Medicine entity, string MedicineTypeName);
+        Medicine Update(Medicine entity, int price);
 
         Medicine Get(int id);
 

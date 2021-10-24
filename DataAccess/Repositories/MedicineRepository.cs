@@ -53,7 +53,7 @@ namespace DataAccess.Repositories
             }
         }
 
-        public bool Update(Medicine entity)
+        public bool Update(Medicine entity,int price)
         {
             try
             {
@@ -63,9 +63,13 @@ namespace DataAccess.Repositories
             }
             catch (Exception)
             {
-
                 throw;
             }
+        }
+
+        public bool Update(Medicine entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

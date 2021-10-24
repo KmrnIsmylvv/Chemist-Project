@@ -3,7 +3,7 @@ using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
+
 
 namespace Business.Services
 {
@@ -75,16 +75,31 @@ namespace Business.Services
             return medicineRepository.Get(m => m.Name.ToLower() == name.ToLower());
         }
 
-      
+
 
         public List<Medicine> GetAll()
         {
             return medicineRepository.GetAll();
         }
 
-        public Medicine Update(Medicine entity, string MedicineTypeName)
+
+
+
+
+        public Medicine Update(Medicine medicine, int price)
         {
-            throw new NotImplementedException();
+            Medicine dbMedicine = medicineRepository.Get(m => m.Id == medicine.Id);
+            if (dbMedicine != null)
+            {
+                medicineRepository.Update(medicine, price);
+                return medicine;
+            }
+            else
+            {
+                return null;
+            }
         }
+
+
     }
 }

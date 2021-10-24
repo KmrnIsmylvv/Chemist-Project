@@ -27,7 +27,8 @@ namespace Utilies.Helper
             GetAllMedicines,
             DeleteMedicine,
             GetMedicineWithId,
-            GetMedicineWithName
+            GetMedicineWithName,
+            UpdateMedicine
         }
     }
 }

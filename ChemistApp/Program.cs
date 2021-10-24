@@ -62,6 +62,9 @@ namespace ChemistApp
                         case (int)Helper.Menu.GetMedicineWithName:
                             medicineController.GetWithName();
                             break;
+                        case (int)Helper.Menu.UpdateMedicine:
+                            medicineController.Update();
+                            break;
                     }
                 }
                 else if (menu == 0)
@@ -81,7 +84,7 @@ namespace ChemistApp
                    "3- Delete MedicineType, 4-Get MedicineType with Id, 5- Get MedicineType with Name," +
                    " 6- All MedicineTypes, 7- Create Medicine,8- Get All Medicines With Type Name," +
                    "9- All Medicines,10- Delete Medicine,11- Get Medicine With Id," +
-                   "12- Get Medicine With Name, 0- Exit ");
+                   "12- Get Medicine With Name,13- Update Medicine, 0- Exit ");
             Helper.ChangeTextColor(ConsoleColor.Yellow, "Select Option Number: ");
         }
     }
