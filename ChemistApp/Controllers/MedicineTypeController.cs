@@ -27,11 +27,7 @@ namespace ChemistApp.Controllers
                 Helper.ChangeTextColor(ConsoleColor.Green, $"{medicineType.TypeName} created");
                 return;
             }
-            else
-            {
-                Helper.ChangeTextColor(ConsoleColor.Red, "Something is wrong!!!");
-                return;
-            }
+
         }
 
         public void GetAll()
@@ -57,10 +53,7 @@ namespace ChemistApp.Controllers
                     Helper.ChangeTextColor(ConsoleColor.Green, "Medicine Type is deleted");
                     return;
                 }
-                else
-                {
-                    Helper.ChangeTextColor(ConsoleColor.Red, $"{medicineTypeId} is not find");
-                }
+
             }
             else
             {
@@ -130,7 +123,7 @@ namespace ChemistApp.Controllers
                             item.TypeName = newTypeName;
                             Helper.ChangeTextColor(ConsoleColor.Green, $"Type Name is updated: {item.Id} - {item.TypeName}");
                         }
-                       
+
                     }
                     else
                     {

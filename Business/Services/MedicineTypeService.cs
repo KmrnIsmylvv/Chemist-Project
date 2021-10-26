@@ -3,6 +3,7 @@ using DataAccess.Repositories;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
+using Utilies.Exceptions;
 
 namespace Business.Services
 {
@@ -29,24 +30,34 @@ namespace Business.Services
                 count++;
                 return medicineType;
             }
-            catch (Exception)
+            catch (MedicineTypeExceptions ex)
             {
-                return null;
+                Console.WriteLine("There isnt such as type", ex.Message);
+                return default;
             }
         }
 
         public MedicineType Delete(int Id)
         {
             MedicineType dbMedicineType = medicineTypeRepository.Get(t => t.Id == Id);
-            if (dbMedicineType != null)
+            try
             {
-                medicineTypeRepository.Delete(dbMedicineType);
-                return dbMedicineType;
+                if (dbMedicineType != null)
+                {
+                    medicineTypeRepository.Delete(dbMedicineType);
+                    return dbMedicineType;
+                }
+                else
+                {
+                    throw new MedicineException("There isnt such as type");
+                }
             }
-            else
+            catch (MedicineTypeExceptions ex)
             {
-                return null;
+                Console.WriteLine("There isnt such as type", ex.Message);
+                return default;
             }
+            
         }
 
         public MedicineType Get(int Id)
@@ -67,15 +78,25 @@ namespace Business.Services
         public MedicineType Update(int Id, MedicineType medicineType)
         {
             MedicineType dbMedicineType = medicineTypeRepository.Get(t => t.Id == Id);
-            if (dbMedicineType != null)
+            try
             {
-                medicineTypeRepository.Update(medicineType);
-                return medicineType;
+                if (dbMedicineType != null)
+                {
+                    medicineTypeRepository.Update(medicineType);
+                    return medicineType;
+                }
+                else
+                {
+                    throw new MedicineException("There isnt such as type");
+                }
             }
-            else
+            catch (MedicineTypeExceptions ex)
             {
-                return null;
+
+                Console.WriteLine("There isnt such as type", ex.Message);
+                return default; 
             }
+           
         }
     }
 }

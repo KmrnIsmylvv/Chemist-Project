@@ -34,7 +34,7 @@ namespace ChemistApp.Controllers
                     $" {newMedicine.Name} - {newMedicine.Price} Azn");
                 return;
             }
-            Helper.ChangeTextColor(ConsoleColor.Red, $"Couldnt find such as Medicine Type - {typeName}");
+          //  Helper.ChangeTextColor(ConsoleColor.Red, $"Couldnt find such as Medicine Type - {typeName}");
         }
 
         public void GetAllMedicinesWithTypeNames()
@@ -54,7 +54,7 @@ namespace ChemistApp.Controllers
                 }
                 return;
             }
-            Helper.ChangeTextColor(ConsoleColor.Red, $"Couldnt find such as type {typeName}");
+           // Helper.ChangeTextColor(ConsoleColor.Red, $"Couldnt find such as type {typeName}");
         }
 
         public void Delete()
@@ -72,10 +72,7 @@ namespace ChemistApp.Controllers
                     Helper.ChangeTextColor(ConsoleColor.Green, "Medicine Type is deleted");
                     return;
                 }
-                else
-                {
-                    Helper.ChangeTextColor(ConsoleColor.Red, $"{medicineId} is not find");
-                }
+                
             }
             else
             {
